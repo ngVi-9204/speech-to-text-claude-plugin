@@ -21,7 +21,18 @@ run.bat
 Lần chạy đầu sẽ tự tạo virtual environment và cài thư viện (mất vài phút vì phải
 tải model faster-whisper lần đầu tiên).
 
-### macOS
+### macOS — cách nhanh nhất (double-click, tự cài đặt)
+
+Mở Finder, vào thư mục [mac/](mac), **double-click file `install.command`**.
+Nó tự mở Terminal, tự tạo virtual environment, tự cài `faster-whisper` và các
+thư viện cần thiết (chỉ lần đầu, sau đó chạy ngay), rồi tự khởi động chương
+trình — không cần gõ lệnh gì.
+
+Nếu Finder chặn ("không thể mở vì không rõ nhà phát triển"): chuột phải vào
+`install.command` → **Open** → xác nhận **Open** lần nữa.
+
+### macOS — chạy tay qua Terminal
+
 ```bash
 chmod +x run.sh
 ./run.sh

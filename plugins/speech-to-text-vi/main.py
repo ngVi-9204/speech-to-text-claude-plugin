@@ -5,7 +5,7 @@ from pynput import keyboard as pkeyboard
 
 from app.config import load_config
 from app.hotkeys import parse_key
-from app.inserter import copy_and_paste
+from app.inserter import copy_and_paste, notify
 from app.recorder import Recorder
 from app.transcriber import Transcriber
 from app.vad_listener import VadListener
@@ -60,6 +60,7 @@ class HotkeyApp:
             if text:
                 print(f"[✓] Kết quả: {text}")
                 copy_and_paste(text, auto_paste=self.config["auto_paste"])
+                notify(text)
             else:
                 print("[!] Không nhận dạng được nội dung nào.")
         finally:
@@ -99,6 +100,7 @@ class VadApp:
         if text:
             print(f"[✓] Kết quả: {text}")
             copy_and_paste(text, auto_paste=self.config["auto_paste"])
+            notify(text)
         else:
             print("[!] Không nhận dạng được nội dung nào.")
 
