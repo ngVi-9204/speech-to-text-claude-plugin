@@ -1,0 +1,24 @@
+# Cấu hình Speech-to-Text cho Claude
+# Phím tắt bật/tắt ghi âm (nhấn 1 lần để bắt đầu, nhấn lại để dừng và dán văn bản)
+hotkey: "f9"
+
+# Phím để hủy bản ghi âm hiện tại mà không dán gì cả
+cancel_key: "esc"
+
+# Ngôn ngữ nhận dạng: "vi" (tiếng Việt), "en" (tiếng Anh), hoặc null để tự động phát hiện
+language: "vi"
+
+# Kích thước model faster-whisper: tiny, base, small, medium, large-v3
+model_size: "small"
+
+# Thiết bị chạy model: "cpu" hoặc "cuda" (nếu có GPU NVIDIA)
+device: "cpu"
+
+# Kiểu tính toán: "int8" khuyên dùng cho cpu, "float16" khuyên dùng cho cuda
+compute_type: "int8"
+
+# Tự động dán văn bản vào nơi đang gõ (Ctrl+V / Cmd+V) sau khi nhận dạng xong
+auto_paste: true
+
+# Tần số lấy mẫu ghi âm (giữ nguyên 16000, không cần đổi)
+sample_rate: 16000

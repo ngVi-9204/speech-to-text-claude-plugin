@@ -1,0 +1,12 @@
+{
+  "name": "speech-to-text-vi",
+  "displayName": "Speech-to-Text tiếng Việt (faster-whisper)",
+  "version": "1.0.0",
+  "description": "Ghi âm và nhận dạng giọng nói tiếng Việt bằng faster-whisper, chạy hoàn toàn trên máy. Gõ/nói 'bắt đầu ghi âm giúp tôi' rồi 'dừng lại' để nhận văn bản.",
+  "author": {
+    "name": "ngVi-9204"
+  },
+  "license": "MIT",
+  "keywords": ["speech-to-text", "whisper", "voice", "vietnamese", "dictation"],
+  "mcpServers": "./mcp-config.json"
+}

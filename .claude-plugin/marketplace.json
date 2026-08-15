@@ -1,0 +1,13 @@
+{
+  "name": "speech-to-text-claude-marketplace",
+  "owner": {
+    "name": "ngVi-9204"
+  },
+  "plugins": [
+    {
+      "name": "speech-to-text-vi",
+      "source": "./plugins/speech-to-text-vi",
+      "description": "Ghi âm giọng nói tiếng Việt và nhận dạng bằng faster-whisper ngay trong hội thoại Claude Code (start_recording / stop_recording_and_transcribe)."
+    }
+  ]
+}
