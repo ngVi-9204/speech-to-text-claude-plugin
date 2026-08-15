@@ -48,6 +48,10 @@ Trên Windows thường không cần cấp quyền gì thêm.
 
 ## 3. Sử dụng
 
+Có 2 chế độ, chọn bằng trường `mode` trong [config.yaml](config.yaml).
+
+### Chế độ `hotkey` (thủ công, mặc định)
+
 1. Chạy `run.bat` (Windows) hoặc `./run.sh` (macOS). Đợi dòng "Model đã sẵn sàng."
 2. Click vào ô nhập liệu trong Claude (Desktop app, trình duyệt, hoặc terminal
    đang chạy Claude Code).
@@ -56,14 +60,33 @@ Trên Windows thường không cần cấp quyền gì thêm.
 5. Nhấn **Esc** trong lúc đang ghi âm để hủy bỏ, không dán gì cả.
 6. Nhấn **Ctrl+C** trong cửa sổ terminal để thoát chương trình.
 
+### Chế độ `vad` (tự động, không cần bấm/nói "bắt đầu")
+
+Đặt `mode: "vad"` trong `config.yaml`, rồi chạy như trên. Công cụ lắng nghe
+micro liên tục: hễ bạn nói là tự ghi, im lặng khoảng `vad_silence_ms` là tự
+dừng, nhận dạng và tự dán — không cần thao tác gì trong lúc nói.
+
+- Click vào ô nhập liệu Claude trước khi nói (văn bản dán vào nơi đang focus).
+- Nhấn phím `toggle_key` (mặc định cũng F9) để **tạm dừng/bật lại** việc lắng
+  nghe — nên tắt đi khi không dùng để tránh ghi nhầm lúc gọi điện, nói chuyện
+  xung quanh.
+- Nếu bị bắt nhầm tiếng ồn nền hoặc bỏ sót câu nói khẽ, chỉnh `vad_threshold`
+  trong `config.yaml` (tăng lên nếu bắt nhầm ồn, giảm xuống nếu bỏ sót giọng nói).
+
 ## 4. Cấu hình
 
 Chỉnh sửa [config.yaml](config.yaml):
 
 | Trường | Ý nghĩa |
 |---|---|
-| `hotkey` | Phím bật/tắt ghi âm (mặc định `f9`) |
-| `cancel_key` | Phím hủy bản ghi hiện tại (mặc định `esc`) |
+| `mode` | `hotkey` (thủ công) hoặc `vad` (tự động phát hiện giọng nói) |
+| `hotkey` | Phím bật/tắt ghi âm ở mode `hotkey` (mặc định `f9`) |
+| `cancel_key` | Phím hủy bản ghi hiện tại ở mode `hotkey` (mặc định `esc`) |
+| `toggle_key` | Phím tạm dừng/bật lại lắng nghe ở mode `vad` (mặc định `f9`) |
+| `vad_threshold` | Ngưỡng âm lượng RMS để coi là "đang nói" ở mode `vad` (mặc định `0.02`) |
+| `vad_silence_ms` | Im lặng bao lâu (ms) thì coi là nói xong, tự dừng (mặc định `800`) |
+| `vad_min_speech_ms` | Bỏ qua đoạn ghi ngắn hơn mức này, lọc tiếng ồn (mặc định `300`) |
+| `vad_max_utterance_s` | Giới hạn tối đa một lượt nói (giây), tránh ghi vô hạn (mặc định `30`) |
 | `language` | `vi`, `en`, hoặc để trống (`null`) để tự động phát hiện ngôn ngữ |
 | `model_size` | `tiny` / `base` / `small` / `medium` / `large-v3` — model càng lớn càng chính xác nhưng càng chậm |
 | `device` | `cpu` hoặc `cuda` (nếu có GPU NVIDIA hỗ trợ) |

@@ -1,9 +1,37 @@
 # Cấu hình Speech-to-Text cho Claude
+
+# Chế độ hoạt động:
+#   "hotkey" — bấm phím để bắt đầu ghi âm, bấm lại để dừng (thủ công)
+#   "vad"    — tự động: hễ nói là tự ghi, im lặng là tự dừng, không cần bấm gì
+mode: "hotkey"
+
+# --- Cấu hình dùng cho mode "hotkey" ---
+
 # Phím tắt bật/tắt ghi âm (nhấn 1 lần để bắt đầu, nhấn lại để dừng và dán văn bản)
 hotkey: "f9"
 
 # Phím để hủy bản ghi âm hiện tại mà không dán gì cả
 cancel_key: "esc"
+
+# --- Cấu hình dùng cho mode "vad" ---
+
+# Phím để tạm dừng / bật lại việc lắng nghe tự động (tránh bắt nhầm lúc gọi điện...)
+toggle_key: "f9"
+
+# Ngưỡng âm lượng (RMS, 0.0 - 1.0) để coi là "đang nói". Nếu bị bắt nhầm tiếng ồn
+# nền, tăng số này lên (vd 0.03-0.05). Nếu nói khẽ mà không được ghi, giảm xuống.
+vad_threshold: 0.02
+
+# Im lặng liên tục bao nhiêu mili-giây thì coi là nói xong và tự dừng ghi
+vad_silence_ms: 800
+
+# Bỏ qua các đoạn ghi ngắn hơn mili-giây này (lọc tiếng ồn/va chạm ngắn)
+vad_min_speech_ms: 300
+
+# Giới hạn tối đa một lượt nói (giây), tự dừng dù chưa im lặng, tránh ghi vô hạn
+vad_max_utterance_s: 30
+
+# --- Cấu hình chung ---
 
 # Ngôn ngữ nhận dạng: "vi" (tiếng Việt), "en" (tiếng Anh), hoặc null để tự động phát hiện
 language: "vi"
